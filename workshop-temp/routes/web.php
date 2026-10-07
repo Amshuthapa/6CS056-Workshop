@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Contact routes
 Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
 
 Route::get('/contacts/create', [ContactController::class, 'create'])->name('contacts.create');
@@ -20,3 +22,6 @@ Route::get('/contacts/{contact}/edit', [ContactController::class, 'edit'])->name
 Route::put('/contacts/{contact}', [ContactController::class, 'update'])->name('contacts.update');
 
 Route::delete('/contacts/{contact}', [ContactController::class, 'destroy'])->name('contacts.destroy');
+
+// Student routes
+Route::resource('students', StudentController::class);
